@@ -1,0 +1,56 @@
+{
+    "name": "telegram-js",
+    "display": "Telegram JS bot",
+    "type": "telegram",
+    "install": [
+      {
+        "commands": [
+          "npm i"
+        ],
+        "type": "command"
+      },
+      {
+        "target": ".env",
+        "text": "TOKEN=\"${telegram-bot-token}\"",
+        "type": "writefile"
+      }
+    ],
+    "run": {
+      "stopCode": 2,
+      "command": "node ${bot-js-file}",
+      "workingDirectory": "",
+      "pre": [
+        {
+          "commands": [
+            "git pull"
+          ],
+          "type": "command"
+        }
+      ],
+      "post": [],
+      "environmentVars": {}
+    },
+    "data": {
+      "bot-js-file": {
+        "type": "string",
+        "desc": "The main bot file.",
+        "display": "Main bot file",
+        "required": true,
+        "value": "bot.js"
+      },
+      "telegram-bot-token": {
+        "type": "string",
+        "desc": "This is the token got from @BotFather",
+        "display": "Telegram bot token",
+        "required": true,
+        "value": "YOUR_BOT_TOKEN",
+        "userEdit": true
+      }
+    },
+    "supportedEnvironments": [
+      {
+        "type": "standard"
+      }
+    ],
+    "requirements": {}
+  }
