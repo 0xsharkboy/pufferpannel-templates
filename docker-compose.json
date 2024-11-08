@@ -1,0 +1,49 @@
+{
+  "name": "docker-compose",
+  "display": "Docker Compose",
+  "type": "docker-compose",
+  "install": [
+    {
+      "commands": [
+        "git clone ${git-repo} -b ${git-branch} .",
+        "docker-compose pull"
+      ],
+      "type": "command"
+    }
+  ],
+  "run": {
+    "stopCode": 2,
+    "command": "docker-compose up --build",
+    "workingDirectory": "",
+    "pre": [
+      {
+        "commands": [
+          "git pull"
+        ],
+        "type": "command"
+      }
+    ],
+    "post": [],
+    "environmentVars": {}
+  },
+  "data": {
+    "git-branch": {
+      "type": "string",
+      "desc": "main is default",
+      "display": "Git repository branch",
+      "value": "main"
+    },
+    "git-repo": {
+      "type": "string",
+      "desc": "Http or ssh (prefer ssh)",
+      "display": "Git repository url",
+      "required": true
+    }
+  },
+  "supportedEnvironments": [
+    {
+      "type": "standard"
+    }
+  ],
+  "requirements": {}
+}
