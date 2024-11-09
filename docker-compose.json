@@ -5,7 +5,7 @@
   "install": [
     {
       "commands": [
-        "git clone ${git-repo} -b ${git-branch} .",
+        "git clone --recurse-submodules ${git-repo} -b ${git-branch} .",
         "docker-compose pull"
       ],
       "type": "command"
@@ -18,7 +18,7 @@
     "pre": [
       {
         "commands": [
-          "git pull"
+          "git pull --recurse-submodules"
         ],
         "type": "command"
       }
